@@ -1,21 +1,15 @@
-<html>
+<html ng-app="lf2">
   <head>
     <title>.:Little Fighter 2:.</title>
-
     <script type='text/javascript' src='bower_components/angular/angular.js'></script>
+    <script type='text/javascript' src='js/app.js'></script>
+    <script type='text/javascript' src='js/controllers/game_controller.js'></script>
   </head>
   <body>
-    <h4>So you think you've got what it takes to be a... Little Fighter?!</h4>
-    <br/><br/><br/>
-    <small>remember, drugs can ruin your life!</small>
-    <p>
-      <canvas id="gameCanvas" width="640" height="480" style="border:1px dotted gray"></canvas>
-    </p>
-    <script>
-      var c = document.getElementById("gameCanvas");
-      var ctx = c.getContext("2d");
-      ctx.fillStyle = "#FF0000";
-      ctx.fillRect(0, 0, 150, 75);
-    </script>
+    <div ng-controller="gameController" ng-init="init()">
+      <h4>So you think you've got what it takes to be a... Little Fighter?!</h4>
+      <br/><br/><br/>
+      <small>remember kids - drugs can ruin your life!</small>
+    </div>
   </body>
 </html>

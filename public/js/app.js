@@ -1,1 +1,1 @@
-angular.module("lfs2", []);
+var app = angular.module("lf2", []);
