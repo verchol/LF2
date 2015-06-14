@@ -1,0 +1,26 @@
+<html ng-app="lf2">
+  <head>
+    <title>.:Little Fighter 2:.</title>
+    <script type='text/javascript' src='js/libs/pixi.js'></script>
+  </head>
+  <body>
+    <div>
+      <canvas id="game_canvas" width="1280" height="1024" style="border: 1px solid black"></canvas>
+    </div>
+
+    <script type='text/javascript' src="js/gamemodel.js"></script>
+    <script type='text/javascript' src="js/presentation.js"></script>
+    <script>
+      presentation({
+	game: new game(),
+	/// this is not actually the canvas, technically.
+	// this *should* be the camera, and it will usually be smaller
+	// or equal to the arena size;
+	canvas: {
+	  width: 1024, 
+	  height: 1280
+	}
+      });
+    </script>
+  </body>
+</html>
