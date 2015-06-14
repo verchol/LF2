@@ -1,15 +1,26 @@
-<html ng-app="lf2">
+<html>
   <head>
     <title>.:Little Fighter 2:.</title>
-    <script type='text/javascript' src='bower_components/angular/angular.js'></script>
-    <script type='text/javascript' src='js/app.js'></script>
-    <script type='text/javascript' src='js/controllers/game_controller.js'></script>
+    <script type='text/javascript' src='js/libs/pixi.js'></script>
   </head>
   <body>
-    <div ng-controller="gameController" ng-init="init()">
-      <h4>So you think you've got what it takes to be a... Little Fighter?!</h4>
-      <br/><br/><br/>
-      <small>remember kids - drugs can ruin your life!</small>
+    <div>
+      <canvas id="game_canvas" width="1280" height="1024" style="border: 1px solid black"></canvas>
     </div>
+
+    <script type='text/javascript' src="js/gamemodel.js"></script>
+    <script type='text/javascript' src="js/presentation.js"></script>
+    <script>
+      presentation({
+	game: new game(),
+	/// this is not actually the canvas, technically.
+	// this *should* be the camera, and it will usually be smaller
+	// or equal to the arena size;
+	canvas: {
+	  width: 1024, 
+	  height: 1280
+	}
+      });
+    </script>
   </body>
 </html>
