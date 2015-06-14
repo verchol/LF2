@@ -8,8 +8,11 @@ app.set('views', __dirname + '/public/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+app.get('/ecs', function (req, res) {
+  res.render('ECS/index.html');
+});
 
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
   res.render('index.html');
 });
 
