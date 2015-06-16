@@ -23,7 +23,7 @@ app.get('/pixi_comp', function (req, res) {
 */
 
 app.get('/renderer', function (req, res) {
-  res.render('pixi_comp/index.html');
+  res.render('renderer/index.html');
 });
 
 app.get('/', function (req, res) {
