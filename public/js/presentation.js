@@ -1,34 +1,58 @@
-function presentation() {
-  // here is where we set our canvas size
-  // canvas.size = game.arena.[width x height]
-  var arena = game.arena;
+function presentation(params) {
+	var _arena;
+	var _players;
+	var _arenaTopLeft = { x:0, y:0 };
+	var _model = {};
+	var _canvas = {};
+	var _drawingContext = {};
 
-  var DOMcanvas = canvas.DOMElement;
-  var ctx = DOMcanvas.getContext("2d");
+	populatePresentationModel(params);
+	
+	setInterval(drawGame, 50);
+	//requestAnimationFrame(presentation);
 
-  //requestAnimationFrame(presentation);
-  
-  setInterval(drawPage, 50);
-  
-  function drawPage(){
-	  ctx.clearRect(0, 0, canvas.width, canvas.height);
-	  arenaTopLeftX = 0;
-	  arenaTopLeftY = canvas.height - arena.height;
-	  /*
-	  console.log("top left Y: " + arenaTopLeftY);
-	  console.log("canvas height: " + canvas.height);
-	  console.log("arena height: " + arena.height);
-	  arenaStartWidth = canvas.height - arena.height;
-	  arenaStartHeight = canvas.width - arena.width;
-	  */
-	  ctx.fillStyle = "#FF0000";
-	  ctx.fillRect(arenaTopLeftX, arenaTopLeftY, arena.width, arena.height);
-	  ctx.fillStyle = "#0000FF";
-	  ctx.fillRect(0, 0, arena.width, arenaTopLeftY);
-	  
-	  ctx.fillStyle = "#00FFFF";
-	  game.players.forEach(function (p) {
-		ctx.fillRect(p.x, p.y, p.size, p.size);
-	  });
-  }
+	function drawGame(){
+		clearCanvas();
+		
+		drawBackground();
+		drawArena();
+
+		_players.forEach(drawPlayer);
+	}
+	
+	function clearCanvas(){
+		_drawingContext.clearRect(0, 0, _canvas.width, _canvas.height);
+	}
+	
+	function drawBackground(){
+		_drawingContext.fillStyle = "#FF0000";
+		_drawingContext.fillRect(_arenaTopLeft.x, _arenaTopLeft.y, _arena.width, _arena.height);
+	}
+	
+	function drawArena(){
+		_drawingContext.fillStyle = "#0000FF";
+		_drawingContext.fillRect(0, 0, _arena.width, _arenaTopLeft.y);
+	}
+	
+	function drawPlayer(player){
+		_drawingContext.fillStyle = "#00FFFF";
+		_drawingContext.fillRect(player.x, player.y, player.size, player.size);
+	}
+
+	function populatePresentationModel(params){
+		if (!params.game)
+			 throw "presentation: how are you supposed to start a game without proper arguments?";
+		
+		_canvas = {
+			width: 1024, 	//TODO: why are these values not drawn from the canvas itself?
+			height: 1280,	
+			DOMElement: document.getElementById("game_canvas") //TODO get via params.
+		};
+		
+		_drawingContext = _canvas.DOMElement.getContext("2d");
+		
+		_arena = params.game.arena;
+		_players = params.game.players;
+		_arenaTopLeft.y = _canvas.height - _arena.height;
+	}
 }

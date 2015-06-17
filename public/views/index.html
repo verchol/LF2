@@ -10,12 +10,17 @@
 
     <script type='text/javascript' src="js/gamemodel.js"></script>
     <script type='text/javascript' src="js/presentation.js"></script>
-    <script type='text/javascript' src="js/main.js"></script>
+    <!-- script type='text/javascript' src="js/main.js"></script -->
     <script type='text/javascript' src="js/core.js"></script>
 	
 	<script>
-		var core = new core({game: game});
+		//TODO: move this code to main.js
+		var gameModel = new game();
+	
+		var core = new core({game: gameModel});
 		core.gameLoop();
+		
+		var presentation = new presentation({game: gameModel});
 	</script>
   </body>
 </html>
