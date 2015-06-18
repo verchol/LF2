@@ -6,17 +6,24 @@ function game() {
 
   this.players = [{x: 10, y: 1000, size: 20, speed: 5}];
 
-  this.moveEntity = function (entity, direction) {
-    var dif;
+  this.moveEntity = function (entity, direction, canvas) {
+    var dif,
+	arenaStartY;
     switch (direction) {
     case "up":
-      entity.y -= entity.speed;
+      arenaStartY = canvas.height - arena.height;
+      if (entity.y - entity.speed >= arenaStartY) {
+	entity.y -= entity.speed;
+      } else {
+	dif = arenaStartY - entity.y;
+	entity.y -= dif;
+      }
       break;
     case "down":
       if (entity.y + entity.size + entity.speed <= this.arena.height) {
 	entity.y += entity.speed;
       } else {
-	dif = entity.speed + (entity.y + entity.size + entity.speed);
+	dif =  (entity.y + entity.size + entity.speed) - this.arena.height;
 	entity.y += dif;
       }
       break;
@@ -29,7 +36,12 @@ function game() {
       }
       break;
     case "right":
-      entity.x += entity.speed;
+      if (entity.x + entity.speed >= this.arena.width) {
+	entity.x += entity.speed;
+      } else {
+	dif = entity.speed + (entity.x - entity.speed);
+	entity.x += dif;
+      }
       break;
     }
   }
