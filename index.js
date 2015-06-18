@@ -22,8 +22,9 @@ app.get('/pixi_comp', function (req, res) {
 });
 */
 
-app.get('/renderer', function (req, res) {
-  res.render('renderer/index.html');
+app.get('/jasmine', function (req, res) {
+  // 'root' dir for views is public/views, jasmine is in public/
+  res.render('../jasmine/SpecRunner.html');
 });
 
 app.get('/', function (req, res) {
