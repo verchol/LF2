@@ -26,4 +26,3 @@ canvas = {
   height: 1280,
   DOMElement: document.getElementById("game_canvas") 
 };
-requestAnimationFrame(presentation);

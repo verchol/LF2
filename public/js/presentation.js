@@ -5,19 +5,25 @@ function presentation(params) {
 	var _model = {};
 	var _canvas = {};
 	var _drawingContext = {};
+    var _onFinishDraw = function(){};
 
 	populatePresentationModel(params);
 	
-	setInterval(drawGame, 50);
-	//requestAnimationFrame(presentation);
+    //this.drawGame = drawGame;
+    this.start = start;
+    function start(){
+        drawGame();
+    }
 
 	function drawGame(){
 		clearCanvas();
-		
 		drawBackground();
 		drawArena();
-
 		_players.forEach(drawPlayer);
+        
+        addFps();
+        
+        _onFinishDraw(drawGame);
 	}
 	
 	function clearCanvas(){
@@ -54,5 +60,28 @@ function presentation(params) {
 		_arena = params.game.arena;
 		_players = params.game.players;
 		_arenaTopLeft.y = _canvas.height - _arena.height;
+        _onFinishDraw = params._onFinishDraw;
 	}
+    
+    var _startTime = performance.now();
+    var _numberOfFrames = 0;
+    var _fps = 0;
+    
+    function addFps(){
+        var now = performance.now();
+        if (now - 1000 > _startTime){
+            _startTime = now;
+            _fps = _numberOfFrames;
+            _numberOfFrames = 0;
+        }
+        _numberOfFrames++;
+        
+        drawFps();
+    }
+    
+    function drawFps(){
+        _drawingContext.fillStyle = "#FFFFFF";
+        _drawingContext.font="20px Ariel";
+        _drawingContext.fillText("fps: " + _fps,10,50);
+    }
 }

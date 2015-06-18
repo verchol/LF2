@@ -20,7 +20,8 @@
 		var core = new core({game: gameModel});
 		core.gameLoop();
 		
-		var presentation = new presentation({game: gameModel});
+		var presentation = new presentation({game: gameModel, _onFinishDraw: requestAnimationFrame});
+		presentation.start();
 	</script>
   </body>
 </html>
