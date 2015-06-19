@@ -1,6 +1,9 @@
+//TODO delete
+
+
 ecs = {
   components: {},
   systems: {}
 };
 
-setUpPositionSystem(ecs);
+setUpPositionComponent(ecs);

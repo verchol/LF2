@@ -1,18 +1,37 @@
 function core(params){
   var gameModel = params.game;
+  var systems = [new positionSystem()]; //TODO positionSystem should attach itself to core, not the other way around
   
   //TODO: add direction
-  //TODo: add user input
-  this.moveEntity = function(entity) {
-    entity.x += entity.speed;
-  }
-  var _moveEntity = this.moveEntity;  
+  //TODO: add user input
+  
+  //TODO rename to startGameLoop  
+  populateBasicGame(gameModel);
   
   this.gameLoop = function(){
-    setInterval(function () {
-      gameModel.players.forEach(function (p) {
-        _moveEntity(p);
-      });
-    }, 100);
+    setInterval(updateGame, 100);
   }
+  
+  function updateGame(){
+    systems.forEach(function (system){
+      system.runActionOnEntities("moveRight",gameModel.entities);
+    });
+  }
+}
+
+//TEMP
+function populateBasicGame(gameModel){
+  var entity = entityFactory();
+  gameModel.entities.push(entity);
+}
+
+//TEMP
+// and/or move to its own file and add tests
+function entityFactory(){
+  return {
+    components: [
+      new positionComponent()
+    ],
+    size: 20 //TODO (opened a ticket about this)
+  };
 }

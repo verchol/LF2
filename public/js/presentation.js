@@ -1,6 +1,6 @@
 function presentation(params) {
   var _arena;
-  var _players;
+  var _entities;
   var _arenaTopLeft = { x:0, y:0 };
   var _model = {};
   var _canvas = {};
@@ -18,7 +18,7 @@ function presentation(params) {
     clearCanvas();
     drawBackground();
     drawArena();
-    _players.forEach(drawPlayer);
+    _entities.forEach(drawPlayer);
     
     addFps();
     
@@ -44,7 +44,7 @@ function presentation(params) {
   
   function drawPlayer(player){
     _drawingContext.fillStyle = "#00FFFF";
-    _drawingContext.fillRect(player.x, player.y, player.size, player.size);
+    _drawingContext.fillRect(player.components[0].x, _arenaTopLeft.y + 15 + player.components[0].y, player.size, player.size);
   }
 
   function populatePresentationModel(params){
@@ -65,7 +65,7 @@ function presentation(params) {
     _drawingContext = _canvas.DOMElement.getContext("2d");
     
     _arena = params.game.arena;
-    _players = params.game.players;
+    _entities = params.game.entities;
     _arenaTopLeft.y = _canvas.height - _arena.height;
     _onFinishDraw = params._onFinishDraw;
   }
