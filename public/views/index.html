@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>.:Little Fighter 2:.</title>
+    <script type="text/javascript" src="js/libs/lodash.js"></script>
     <script type='text/javascript' src='js/libs/pixi.js'></script>
   </head>
   <body>
@@ -8,7 +9,9 @@
       <canvas id="game_canvas" width="1280" height="1024" style="border: 1px solid black"></canvas>
     </div>
     <script src="js/components/positionComponent.js"></script>
+    <script src="js/components/renderComponent.js"></script>
     <script src="js/systems/positionSystem.js"></script>
+    <script src="js/systems/renderSystem.js"></script>
     <script type='text/javascript' src="js/gamemodel.js"></script>
     <script type='text/javascript' src="js/presentation.js"></script>
     <script type='text/javascript' src="js/core.js"></script>
@@ -19,8 +22,8 @@
       var core = new core({game: gameModel});
       core.gameLoop();
       
-      var presentation = new presentation({game: gameModel, _onFinishDraw: requestAnimationFrame});
-      presentation.start();
+//      var presentation = new presentation({game: gameModel, _onFinishDraw: requestAnimationFrame});
+//      presentation.start();
     </script>
   </body>
 </html>

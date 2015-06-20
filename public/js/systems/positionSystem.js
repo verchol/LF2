@@ -2,6 +2,7 @@ function PositionSystem() {
   var _globalSpeed = 1; //TODO this is a instance by instance case;
   var self = this;
   this.moveRight = function(pc){  //TODO rename positionComponent
+    // TODO get entity as param, not component
     pc.x += _globalSpeed;
   };
   
