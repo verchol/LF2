@@ -1,18 +1,16 @@
+/*globals _, describe, it, expect, beforeEach*/
+
 describe("ECS", function () {
   it("should create an ECS object", function () {
   });
 });
 
-describe("Position Components", function () {
+describe("Position Component", function () {
   var p;
   beforeEach(function () {
     p = new PositionComponent();
   });
-  
-  it("should insert itself into the ECS object via setUpPositionComponent", function () {
-    expect(typeof ecs.components.position).toBe("object");
-  });
-  
+    
   it("should hold default X and Y coordinates", function () {
     expect(p.x).toEqual(0);
     expect(p.y).toEqual(0);
@@ -32,5 +30,17 @@ describe("Position System", function () {
     expect(p.x).toEqual(0);   // before
     ps.moveRight(p);
     expect(p.x).toEqual(1);  // after
+  });
+});
+
+describe("Render Component", function () {
+  var r;
+  beforeEach(function () {
+    r = new RenderComponent();
+  });
+
+  it("should hold default color and size", function () {
+    expect(r.color).toEqual("#00FFFF");
+    expect(r.size).toEqual(20);
   });
 });
