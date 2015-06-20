@@ -48,17 +48,14 @@ function presentation(params) {
   }
 
   function populatePresentationModel(params){
-    /// Don't forget to add brackets
     if (!params.game) {
-      // We don't "throw" exceptions. Use console.log's and return's.
-      //      throw "presentation: how are you supposed to start a game without proper arguments?";
       console.log("presentation: how are you supposed to start a game without proper arguments?");
       return;
     }
     
     _canvas = {
       width: 1024,   //TODO: why are these values not drawn from the canvas itself? 
-      height: 1280,  // This isn't technically our canvas info, it's our 'camera' info.
+      height: 1280,
       DOMElement: document.getElementById("game_canvas") //TODO get via params.
     };
     

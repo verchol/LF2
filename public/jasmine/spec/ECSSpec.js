@@ -1,13 +1,12 @@
 describe("ECS", function () {
   it("should create an ECS object", function () {
-    
   });
 });
 
 describe("Position Components", function () {
   var p;
   beforeEach(function () {
-    p = new positionComponent();    
+    p = new PositionComponent();
   });
   
   it("should insert itself into the ECS object via setUpPositionComponent", function () {
@@ -25,8 +24,8 @@ describe("Position System", function () {
     p;
   
   beforeEach(function () {
-    ps = new positionSystem();
-    p = new positionComponent();
+    ps = new PositionSystem();
+    p = new PositionComponent();
   });
   
   it("moveRight - should move right by increasing position component's X", function () {

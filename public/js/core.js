@@ -1,6 +1,6 @@
 function core(params){
   var gameModel = params.game;
-  var systems = [new positionSystem()]; //TODO positionSystem should attach itself to core, not the other way around
+  var systems = [new PositionSystem()]; //TODO positionSystem should attach itself to core, not the other way around
   
   //TODO: add direction
   //TODO: add user input
@@ -10,11 +10,11 @@ function core(params){
   
   this.gameLoop = function(){
     setInterval(updateGame, 100);
-  }
+  };
   
   function updateGame(){
     systems.forEach(function (system){
-      system.runActionOnEntities("moveRight",gameModel.entities);
+      system.runActionOnEntities("moveRight", gameModel.entities);
     });
   }
 }
@@ -30,7 +30,7 @@ function populateBasicGame(gameModel){
 function entityFactory(){
   return {
     components: [
-      new positionComponent()
+      new PositionComponent()
     ],
     size: 20 //TODO (opened a ticket about this)
   };
