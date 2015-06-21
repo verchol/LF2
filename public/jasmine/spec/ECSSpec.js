@@ -41,6 +41,7 @@ describe("Render Component", function () {
 
   it("should hold default color and size", function () {
     expect(r.color).toEqual("#00FFFF");
-    expect(r.size).toEqual(20);
+    expect(r.width).toEqual(20);
+    expect(r.height).toEqual(20);
   });
 });
