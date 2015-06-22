@@ -1,7 +1,7 @@
 function core(params){
   var gameModel = params.game;
   var systems = [
-    new PositionSystem(),
+    new MovementSystem(),
     new RenderSystem(document.getElementById("game_canvas"))
   ]; //TODO positionSystem should attach itself to core, not the other way around
   
@@ -16,13 +16,7 @@ function core(params){
   };
   
   function updateGame(){
-    // TODO Totally fix this loop. It runs runActionOnEntities('moveRight') on all systems
-    //      Not all systems have runActionOnEntities or moveRight for that matter
-    /*
-    systems.forEach(function (system){
-      system.runActionOnEntities("moveRight", gameModel.entities);
-    });
-    */
+    // TODO make this loop more 'dynamic'
     systems[0].runActionOnEntities("moveRight", [gameModel.entities[2]]);
     systems[1].renderEntities(gameModel.entities);
   }
@@ -52,6 +46,7 @@ function entityFactory(){
   return new Entity({
     components: [
       new PositionComponent({x: 100, y: 150}),
+      new MovementComponent(),
       new RenderComponent({zIndex: 2})
     ]
   });

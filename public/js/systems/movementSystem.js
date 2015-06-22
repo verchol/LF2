@@ -1,4 +1,4 @@
-function PositionSystem() {
+function MovementSystem() {
   var _globalSpeed = 1; //TODO this is a instance by instance case;
   var self = this;
 
@@ -9,16 +9,16 @@ function PositionSystem() {
       _pc.x += _globalSpeed;
     }
   };
+
   this.runActionOnEntities = function(action, entities){
     if (action !== "moveRight") return;
     
     entities.forEach(function (entity) {
-      if (!entity || !entity.components) { // || !entity.components.)
+      if (!entity || !entity.components || !entity.getComponent('movement') || !entity.getComponent('position')) {
         return;
       }
+
       self.moveEntity(entity, "right");
     });
   };
 }
-//TODO - inject into ECS ?
-//TODO - verify pc is positionComponent
