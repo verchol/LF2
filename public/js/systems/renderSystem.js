@@ -7,10 +7,6 @@ function RenderSystem(DOMElement) {
   };
   var _drawingContext = _canvas.DOMElement.getContext("2d");
 
-  this.clearCanvas = function () {
-    _drawingContext.clearRect(0, 0, _canvas.width, _canvas.height);
-  };
-
   this.drawEntityToCanvas = function (entity) {
     var _r = entity.getComponent('render');
     var _p = entity.getComponent('position');
