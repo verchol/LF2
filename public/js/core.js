@@ -17,27 +17,31 @@ function core(params){
   
   function updateGame(){
     // TODO make this loop more 'dynamic'
-    systems[0].runActionOnEntities("moveRight", [gameModel.entities[2]]);
+    var moveableEntities = [];
+    _.forEach(gameModel.entities, function (entity) {
+      if (entity.getComponent('movement')) moveableEntities.push(entity);
+    });
+    systems[0].runActionOnEntities("moveRight", moveableEntities);
     systems[1].renderEntities(gameModel.entities);
   }
 }
 
 //TEMP
 function populateBasicGame(gameModel){
+  var entity = entityFactory();
+  gameModel.entities.push(entity);
+
   var background = new Entity({
     components: [new PositionComponent(),
-		 new RenderComponent({width: 1280, height: 1024, color: "#FF0000"})]
+		 new RenderComponent({width: 1280, height: 1024, color: "#FF0000", zIndex: 0})]
   });
   gameModel.entities.push(background);
 
   var arena = new Entity({
     components: [new PositionComponent({y: 220}),
-		 new RenderComponent({width: 1280, height: 1024, color: "#0000FF"})]
+		 new RenderComponent({width: 1280, height: 1024, color: "#0000FF", zIndex: 1})]
   });
   gameModel.entities.push(arena);
-
-  var entity = entityFactory();
-  gameModel.entities.push(entity);
 }
 
 //TEMP

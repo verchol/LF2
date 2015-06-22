@@ -21,10 +21,21 @@ function RenderSystem(DOMElement) {
   this.renderEntities = function (entities) {
     self.clearCanvas();
     // TODO render entities by zIndex
+    var _ordered = [];
+    var _renderableEntities = [];
+
+    // this runs every update, which could make for a very memory-intensive task.
+    // TODO find a way to do this once in a while, not every tick
     entities.forEach(function (entity) {
       if (entity.getComponent('render') && entity.getComponent('position')) {
-        self.drawEntityToCanvas(entity);
+	_renderableEntities.push(entity);
       }
+    });
+    _ordered = _.sortBy(_renderableEntities, function (entity) {
+      return entity.getComponent('render').zIndex;
+    });
+    _ordered.forEach(function (entity) {
+      self.drawEntityToCanvas(entity);
     });
   };
 }

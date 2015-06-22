@@ -14,7 +14,6 @@
     <script src="js/systems/movementSystem.js"></script>
     <script src="js/systems/renderSystem.js"></script>
     <script type='text/javascript' src="js/gamemodel.js"></script>
-    <script type='text/javascript' src="js/presentation.js"></script>
     <script type='text/javascript' src="js/core.js"></script>
     <script>
       //TODO: move this code to main.js
@@ -22,9 +21,6 @@
       
       var core = new core({game: gameModel});
       core.gameLoop();
-      
-//      var presentation = new presentation({game: gameModel, _onFinishDraw: requestAnimationFrame});
-//      presentation.start();
     </script>
   </body>
 </html>
