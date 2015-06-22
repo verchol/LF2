@@ -20,6 +20,7 @@ function RenderSystem(DOMElement) {
 
   this.renderEntities = function (entities) {
     self.clearCanvas();
+    // TODO render entities by zIndex
     entities.forEach(function (entity) {
       if (entity.getComponent('render') && entity.getComponent('position')) {
         self.drawEntityToCanvas(entity);
