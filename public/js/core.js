@@ -39,7 +39,7 @@ function populateBasicGame(gameModel){
 
   var arena = new Entity({
     components: [new PositionComponent({y: 220}),
-		 new RenderComponent({width: 1280, height: 1024, color: "#0000FF", zIndex: 1})]
+		 new RenderComponent({width: 1280, height: 1024, color: "#0000FF", zIndex: 0.5})]
   });
   gameModel.entities.push(arena);
 }
@@ -51,7 +51,7 @@ function entityFactory(){
     components: [
       new PositionComponent({x: 100, y: 150}),
       new MovementComponent(),
-      new RenderComponent({zIndex: 2})
+      new RenderComponent({zIndex: 1})
     ]
   });
 }
