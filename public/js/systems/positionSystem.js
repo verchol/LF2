@@ -1,11 +1,14 @@
 function PositionSystem() {
   var _globalSpeed = 1; //TODO this is a instance by instance case;
   var self = this;
-  this.moveRight = function(pc){  //TODO rename positionComponent
-    // TODO get entity as param, not component
-    pc.x += _globalSpeed;
+
+  this.moveEntity = function (entity, direction) {
+    var _pc = entity.getComponent('position');
+    switch(direction) {
+    case "right":
+      _pc.x += _globalSpeed;
+    }
   };
-  
   this.runActionOnEntities = function(action, entities){
     if (action !== "moveRight") return;
     
@@ -13,7 +16,7 @@ function PositionSystem() {
       if (!entity || !entity.components) { // || !entity.components.)
         return;
       }
-      self.moveRight(entity.components[0]);
+      self.moveEntity(entity, "right");
     });
   };
 }
