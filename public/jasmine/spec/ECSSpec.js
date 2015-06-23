@@ -1,10 +1,5 @@
 /*globals _, describe, it, expect, beforeEach*/
 
-describe("ECS", function () {
-  it("should create an ECS object", function () {
-  });
-});
-
 describe("Position Component", function () {
   var p;
   beforeEach(function () {
@@ -17,19 +12,22 @@ describe("Position Component", function () {
   });
 });
 
-describe("Position System", function () {
-  var ps,
-    p;
+describe("Movement System", function () {
+  var entity = {};
   
   beforeEach(function () {
-    ps = new PositionSystem();
-    p = new PositionComponent();
+    entity.components = [
+      new PositionComponent(),
+      new MovementSystem(),
+      new MovementComponent()
+    ]
   });
   
-  it("moveRight - should move right by increasing position component's X", function () {
-    expect(p.x).toEqual(0);   // before
-    ps.moveRight(p);
-    expect(p.x).toEqual(1);  // after
+  it("moveEntity - should move the entity in the given direction by increasing the X and Y of that entity's postion component", function () {
+    var c = entity.getComponent('position');
+    expect(c.x).toEqual(0);   // before
+    ps.moveEntity(entity, "right");
+    expect(c.x).toEqual(1);  // after
   });
 });
 
