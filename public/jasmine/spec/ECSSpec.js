@@ -14,6 +14,7 @@ describe("Position Component", function () {
 
 describe("Movement System", function () {
   var entity = {};
+  var ms;
   
   beforeEach(function () {
     entity.components = [
@@ -21,6 +22,10 @@ describe("Movement System", function () {
       new MovementSystem(),
       new MovementComponent()
     ]
+    getComponent: function (component_name) {
+      return _.find(this.components, {name: component_name});
+    }
+    ms = new MovementSystem();
   });
   
   it("moveEntity - should move the entity in the given direction by increasing the X and Y of that entity's postion component", function () {
