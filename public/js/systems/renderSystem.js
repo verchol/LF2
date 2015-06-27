@@ -19,6 +19,8 @@ function RenderSystem(DOMElement) {
   };
 
   this.renderEntities = function (entities) {
+    if (entities === undefined) return;
+
     self.clearCanvas();
     // TODO render entities by zIndex
     var _ordered = [];

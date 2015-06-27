@@ -11,6 +11,7 @@ function MovementSystem() {
   };
 
   this.runActionOnEntities = function(action, entities){
+    if (action === undefined || entities === undefined) return;
     if (action !== "moveRight") return;
     
     entities.forEach(function (entity) {
