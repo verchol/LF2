@@ -17,22 +17,6 @@ describe("Position Component", function () {
   });
 });
 
-describe("Position System", function () {
-  var ps,
-    p;
-  
-  beforeEach(function () {
-    ps = new PositionSystem();
-    p = new PositionComponent();
-  });
-  
-  it("moveRight - should move right by increasing position component's X", function () {
-    expect(p.x).toEqual(0);   // before
-    ps.moveRight(p);
-    expect(p.x).toEqual(1);  // after
-  });
-});
-
 describe("Render Component", function () {
   var r;
   beforeEach(function () {
