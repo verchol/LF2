@@ -9,6 +9,7 @@ function core(params){
   //TODO: add user input
   
   //TODO rename to startGameLoop  
+  UserInputReceiver();  
   populateBasicGame(gameModel);
   
   this.gameLoop = function(){

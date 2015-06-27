@@ -5,6 +5,6 @@ EVENTS = {
     left: "left",
     up: "up",
     down: "down",
-    attack: "attack",
+    attack: "attack"
   }
-}
+};

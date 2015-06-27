@@ -1,7 +1,7 @@
 //TODO - consider using mapping,
 //OR keydrown.js, for better support and less headaches.
 
-function UserInputReceiver(){
+function UserInputReceiver() {
   document.addEventListener('keydown', function (evt) {
     console.log(evt.keyCode);
     switch(evt.keyCode) {
