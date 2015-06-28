@@ -3,7 +3,6 @@
 
 function UserInputReceiver() {
   document.addEventListener('keydown', function (evt) {
-    console.log(evt.keyCode);
     switch(evt.keyCode) {
       // case 37: //'right arrow' key code
         // alert('left');

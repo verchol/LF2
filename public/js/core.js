@@ -1,3 +1,5 @@
+/*globals $, _, MovementSystem, RenderSystem, MovementComponent, PositionComponent, RenderComponent, radio, EVENTS, UserInputReceiver */
+
 function core(params){
   var gameModel = params.game;
   var systems = [
@@ -7,9 +9,14 @@ function core(params){
   
   //TODO: add direction
   //TODO: add user input
-  
+
+  // TODO move this out. Systems should subscribe themselves
+  radio(EVENTS.userInput.topic).subscribe(function (e) {
+    console.log(e);
+  });
+  UserInputReceiver();
+
   //TODO rename to startGameLoop  
-  UserInputReceiver();  
   populateBasicGame(gameModel);
   
   this.gameLoop = function(){
